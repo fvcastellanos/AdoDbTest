@@ -51,6 +51,24 @@ Public Function GetOrderDetails(ByVal OrderId As Long) As Object
   
 End Function
 
+Public Function GetOrderTotalAmount(ByVal orderDetails As Object) As Double
+
+  Dim total As Double
+  total = 0
+
+  For Index = 0 To orderDetails.Count - 1
+  
+    Set detail = orderDetails(Index)
+    total = total + (detail.Quantity * detail.UnitPrice)
+  
+  Next Index
+  
+  GetOrderTotalAmount = total
+
+End Function
+
+
+' ----------------------------------------------------------------------------------------------------------------
 
 Private Function BuildOrderDetailsQuery() As String
 
