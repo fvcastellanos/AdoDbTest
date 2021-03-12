@@ -21,4 +21,6 @@ Public State As String
 Public Address As String
 Public PostalCode As String
 Public CompanyName As String
+Public Phrases As Object
+Public SubscriptionType As String
 

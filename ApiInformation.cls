@@ -6,16 +6,13 @@ BEGIN
   DataSourceBehavior  = 0  'vbNone
   MTSTransactionMode  = 0  'NotAnMTSObject
 END
-Attribute VB_Name = "GeneralInformation"
+Attribute VB_Name = "ApiInformation"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-Public ApiUrl As String
-Public CurrencyCode As String
-Public DocumentDate As String
-Public DocumentType As String
-Public IsExporting As String
-Public AccessNumber As String
-Public Person As String
-
+Public User As String
+Public WebServiceToken As String
+Public Alias As String
+Public Token As String
+Public Salt As String

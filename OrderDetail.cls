@@ -20,5 +20,3 @@ Public DiscountTaxable As Double
 Public ItemText As String
 Public ItemDescription As String
 
-
-

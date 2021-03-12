@@ -33,37 +33,55 @@ End Function
 Public Function BuildGeneratorInformation() As GeneratorInformation
   Dim info As GeneratorInformation
   Set config = ReadConfiguration()
-  Set Generator = config.item("generator")
+  Set generator = config.item("generator")
   
   Set info = New GeneratorInformation
   
-  info.TaxId = Generator.item("taxId")
-  info.TaxType = Generator.item("taxType")
-  info.Code = Generator.item("code")
-  info.Name = Generator.item("name")
-  info.Email = Generator.item("email")
-  info.Country = Generator.item("country")
-  info.State = Generator.item("state")
-  info.Address = Generator.item("address")
-  info.PostalCode = Generator.item("postalCode")
-  info.CompanyName = Generator.item("companyName")
-  Set info.phrases = BuildPhraseConfiguration(Generator.item("phrases"))
+  info.SubscriptionType = generator.item("subscriptionType")
+  info.TaxId = generator.item("taxId")
+  info.TaxType = generator.item("taxType")
+  info.Code = generator.item("code")
+  info.Name = generator.item("name")
+  info.Email = generator.item("email")
+  info.Country = generator.item("country")
+  info.State = generator.item("state")
+  info.Address = generator.item("address")
+  info.PostalCode = generator.item("postalCode")
+  info.CompanyName = generator.item("companyName")
+  Set info.Phrases = BuildPhraseConfiguration(generator.item("phrases"))
 
   Set config = Nothing
 
   Set BuildGeneratorInformation = info
 End Function
 
-Private Function BuildPhraseConfiguration(ByVal phrases As Object) As Object
+Public Function BuildApiInformation() As ApiInformation
+  Dim info As ApiInformation
+  Set config = ReadConfiguration()
+  Set api = config.item("apiInformation")
+
+  Set info = New ApiInformation
+  info.User = api.item("user")
+  info.WebServiceToken = api.item("wsToken")
+  info.Alias = api.item("signatureAlias")
+  info.Token = api.item("signatureToken")
+  info.Salt = api.item("salt")
+  
+  Set config = Nothing
+  Set BuildApiInformation = info
+
+End Function
+
+Private Function BuildPhraseConfiguration(ByVal Phrases As Object) As Object
 
   Dim list As Object
   Set list = CreateObject("System.Collections.ArrayList")
 
   Dim foo As String
 
-  For index = 1 To phrases.count
+  For index = 1 To Phrases.count
     Set p = New Phrase
-    Set item = phrases(index)
+    Set item = Phrases(index)
     
     p.PhraseType = item("type")
     p.Scenario = item("scenario")

@@ -13,9 +13,9 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Public ItemType As String
 Public UnitType As String
-Public Amount As String
+Public Quantity As String
 Public Description As String
-Public LineNumber As String
+Public lineNumber As String
 Public UnitPrice As String
 Public Price As String
 Public Discount As String

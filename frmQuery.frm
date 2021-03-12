@@ -9,20 +9,28 @@ Begin VB.Form frmQuery
    ScaleHeight     =   4545
    ScaleWidth      =   7935
    StartUpPosition =   3  'Windows Default
+   Begin VB.CommandButton Command4 
+      Caption         =   "Command4"
+      Height          =   615
+      Left            =   840
+      TabIndex        =   3
+      Top             =   3000
+      Width           =   2055
+   End
    Begin VB.CommandButton Command3 
       Caption         =   "Command3"
       Height          =   855
-      Left            =   3600
+      Left            =   2640
       TabIndex        =   2
-      Top             =   2640
+      Top             =   1440
       Width           =   2055
    End
    Begin VB.CommandButton Command2 
       Caption         =   "Command2"
       Height          =   615
-      Left            =   3240
+      Left            =   2880
       TabIndex        =   1
-      Top             =   1440
+      Top             =   600
       Width           =   1935
    End
    Begin VB.CommandButton Command1 
@@ -53,7 +61,7 @@ End Sub
 
 Private Sub Command3_Click()
 
-  Set configurationHelper = New InFileConfigurationHelper
+  Set configurationHelper = New FileConfigurationHelper
 
   Dim info As GeneralInformation
   Set info = configurationHelper.BuildGeneralInformation()
@@ -65,5 +73,16 @@ Private Sub Command3_Click()
   Debug.Print "Name: "; generator.Name
   
   Set configurationHelper = Nothing
+  
+End Sub
+
+Private Sub Command4_Click()
+  Dim service As ElectronicInvoiceService
+  Dim response As String
+  
+  Set service = New ElectronicInvoiceService
+  response = service.GenerateInvoice(1, "1231232", "adelo@mailnator.com")
+  
+  MsgBox (response)
   
 End Sub
