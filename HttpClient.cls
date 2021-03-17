@@ -6,14 +6,11 @@ BEGIN
   DataSourceBehavior  = 0  'vbNone
   MTSTransactionMode  = 0  'NotAnMTSObject
 END
-Attribute VB_Name = "HttpClient"
+Attribute VB_Name = "AdeloFelClient"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-Public HttpResponse As String
-Private myMSXML As Object
-
 Public Function InvoiceRequest(ByVal orderId As Long, ByVal taxId As String, ByVal name As String, ByVal email As String) As String
 
   Dim payload As String
@@ -41,9 +38,3 @@ Private Function BuildRequestPayload(ByVal orderId As Long, ByVal taxId As Strin
 
 End Function
 
-Private Function OnReadyState()
-
-  HttpResponse = myMSXML.ResponseText
-  Debug.Print "Response: " + HttpResponse
-  
-End Function
